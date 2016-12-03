@@ -10,13 +10,66 @@
 \title{Statistics : Final Exam}
 \begin{document}
 \maketitle
+
+If nothing is mentioned, I will use a 5\% confidence interval.
 \section*{Exercise 1}
 \subsection*{Question 1}
 The population is the cones in the eye. The variable is the number of the L type of cone. In this case, the sample is the N cones observed.
 
 \subsection*{Question 2}
 The population is the humans, the variable is the percentage of cone, and the sample here is the 10 people we observe.\\
-The correlation test show, for $M_\%$ and $L_\%$, a correlation coefficient of $-0.96$ with a p-value of $1.0620\cdot 10^{-5}$. This show that there is actually a correlation between $M_\%$ and $L_\%$, as the p-value is far lower than 0.05.\\
-For $M_\% - L_\%$ and $S_\%$, the correlation coefficient is $0.192$ and the p-value $0.5951$. This test does not show a correlation between $M_\% - L_\%$ and $S_\%$ for this sample.\\
+The correlation test show, for $M_\%$ and $L_\%$ (\textsc{Figure}~\ref{corr1}), a correlation coefficient of $-0.96$ with a p-value of $1.0620\cdot 10^{-5}$. As the correlation coefficient is near from $-1$ and the p-value far under $0.05$, this shows that there is actually a correlation between $M_\%$ and $L_\%$, as the p-value is far lower than 0.05.\\
+For $M_\% - L_\%$ and $S_\%$ (\textsc{Figure}~\ref{corr2}), the correlation coefficient is $0.192$ and the p-value $0.5951$. As the correlation coefficient is near to $0$ and the p-value is above $0.05$, this test does not show a correlation between $M_\% - L_\%$ and $S_\%$ for this sample.\\
 We can be pretty confident in the first correlation test, as the p-value is really low. Though, for the second test, it seems pretty unlikely that the test could show a correlation, as the p-value is above $0.5$. This sample should be repeated to check this.
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.6\linewidth]{corr1.pdf}
+    \caption{Plot of $M_\%$ against $L_\%$}
+    \label{corr1}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.6\linewidth]{corr2.pdf}
+    \caption{Plot of $M_\% - L_\%$ against $S_\%$}
+    \label{corr2}
+  \end{center}
+\end{figure}
+
+
+\section*{Exercise 2}
+\subsection*{Question 1}
+Here, we want to see if one of the sample is not equal to the other (i.e the brand put less powder than the other). Thus, our null hypothesis $H_0$ will be :\\
+$H_0$ : the two brands tuned the machine to put different weights of powder.\\
+We then perform a two sample Student analysis with R to see if the two means are equal, and we get a p-value of $0.03481$. We can see here that we do not refute the null hypothesis. Thus, we can say that the brand A and B tuned the machine in differrent ways.\\
+We perform an other two sample Student analysis with the null hypothesis being $H_0$ : the brand A put more powder than B. We then get a p-value from the t-test of $0.0174$, which means that A puts significantly more powder than B.
+
+\subsection*{Question 2}
+We want to check if the two brands actually sell 100mg of powder. For both brands, our null hypothesis will then be :\\
+$H_0$ : the brand sell doses of 100mg.\\
+We perform a one sample Student analysis for both brand samples. We get for the brand A a p-value of $0.06565$. This shows us that we refute the null hypothesis, and thus can tell that the brand A do not sell, in mean, 100mg of powder.\\
+For the brand B, after performing the same test, we get a p-value of $0.0001213$. This p-value is far under $0.05$, thus we do not refute the null hypothesis and can say that the brand B actually sells, in mean, 100mg of powder.\\
+
+I then wanted to know if A was selling more or less than 100mg, as they do not sell exactly this weight. I used a one sample T-test with $H_0$ being $\mu_A < 100mg$. I got a p-value of $0.03282$, meaning that we do not reject the null hypothesis. We can then determine that A is cheating and sells less powder than B.
+
+\section*{Exercise 3}
+\subsection*{Question 1}
+Using visual inspection first (\textsc{Figure}~\ref{corr3}), we observe a pretty good correlation between the two barometers. As we can see in \textsc{Figure}, all the points are around a line (here the linear model regression in blue, with confidence interval of 95\%).\\
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.6\linewidth]{corr3.pdf}
+    \caption{Plot of the data of the second barometer against the first one}
+    \label{corr3}
+  \end{center}
+\end{figure}
+
+We then use the correlation function of R to see if this correlation exists. We obtain a correlation coefficient of $0.95$ wich is close to 1, and a p-value of 0 (it is unlikely that the actual value is higher, but it is the value returned in the matrix by R. It seems this value is under $1\cdot 10^{-3}$.). We can conclude that there is a significant correlation between the two barometers.
+
+\subsection*{Question 2}
+Using the built-in lm R function, we find a equation of the linear model such as $y = 0.9812x + 19.6503$. We then use the summary function on the linear model, and see that the signification level is $<2 \cdot 10^{-16}$. Thus, we can say that our linear model is significant.
+
+
+
 \end{document}

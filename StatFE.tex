@@ -65,11 +65,34 @@ Using visual inspection first (\textsc{Figure}~\ref{corr3}), we observe a pretty
   \end{center}
 \end{figure}
 
-We then use the correlation function of R to see if this correlation exists (with the Spearman option). We obtain a correlation coefficient of $0.95$ wich is close to 1, and a p-value of 0 (it is likely that the actual value is higher, but it is the value returned in the matrix by R. It seems this value is under $1\cdot 10^{-5}$.). We can conclude that there is a significant correlation between the two barometers.
+We then use the correlation function of R to see if this correlation exists (with the Spearman option). We obtain a correlation coefficient of $0.96$ wich is close to 1, and a p-value of 0 (it is likely that the actual value is higher, but it is the value returned in the matrix by R. It seems this value is under $1\cdot 10^{-5}$.). We can conclude that there is a significant correlation between the two barometers.
 
 \subsection*{Question 2}
-Using the built-in lm R function, we find a equation of the linear model such as $y = 0.9812x + 19.6503$. We then use the summary function on the linear model, and see that the signification level is $<2 \cdot 10^{-16}$. Thus, we can say that our linear model is significant.
+Using the built-in lm R function, we find a equation of the linear model such as $y = 0.97035x + 31.04732$. We then use the summary function on the linear model, and see that the signification level is $<2.2 \cdot 10^{-16}$. Thus, we can say that our linear model is significant.
 
+\subsection*{Question 3}
+Using the built-in R function for the Kolmogorov-Smirnov test, I try the hypothesis $H_0$ : The two samples have the same distribution.\\
+I get the result such as $D = 0.60174$ and a p-value such as $2.2e-16$. As D is lower than $1.96$ which corresponds to the $5\%$ confidence interval and the p-value far under $0.05$; we can say that the two samples are the statistically the same.\\
 
+\subsection*{Question 4}
+Please find the data presentation in the \textsc{Figure}~\ref{air2}. The graphical presentation of the correlation is presented in \textsc{Figure}~\ref{prestemp}.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{Air2.pdf}
+        \caption{Plot of the temperature the last 30 days}
+        \label{air2}
+    \end{center}
+\end{figure}
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{PresTemp.pdf}
+        \caption{Plot of the data of the first barometerfor against the air temperature for the last 30 days}
+        \label{prestemp}
+    \end{center}
+\end{figure}
+
+\subsection*{Question 5}
+Using the built-in lm R function, we find a equation of the linear model such as $y = 7.958e-02x + 1.007e+03$. We then use the summary function on the linear model, and see that the signification level is $0.3259$. Thus, we cannot say that our linear model is relevant.
 
 \end{document}

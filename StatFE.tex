@@ -18,9 +18,13 @@ The population is the cones in the eye. The variable is the number of the L type
 
 \subsection*{Question 2}
 The population is the humans, the variable is the percentage of cone, and the sample here is the 10 people we observe.\\
+
 The correlation test show, for $M_\%$ and $L_\%$ (\textsc{Figure}~\ref{corr1}), a correlation coefficient of $-0.96$ with a p-value of $1.0620\cdot 10^{-5}$. As the correlation coefficient is near from $-1$ and the p-value far under $0.05$, this shows that there is actually a correlation between $M_\%$ and $L_\%$, as the p-value is far lower than 0.05.\\
-For $M_\% - L_\%$ and $S_\%$ (\textsc{Figure}~\ref{corr2}), the correlation coefficient is $0.192$ and the p-value $0.5951$. As the correlation coefficient is near to $0$ and the p-value is above $0.05$, this test does not show a correlation between $M_\% - L_\%$ and $S_\%$ for this sample.\\
-We can be pretty confident in the first correlation test, as the p-value is really low. Though, for the second test, it seems pretty unlikely that the test could show a correlation, as the p-value is above $0.5$. This sample should be repeated to check this.
+
+For $M_\% - L_\%$ and $S_\%$ (\textsc{Figure}~\ref{corr2}), the correlation coefficient is $0.192$ and the p-value $0.5951$. As the correlation coefficient is near to $0$ and the p-value is far above $0.05$, this test does not show a correlation between $M_\% - L_\%$ and $S_\%$ for this sample.\\
+
+We can be pretty confident in the first correlation test, as the p-value is really low. Though, for the second test, it seems pretty unlikely that there actually is a correlation, as the correlation coefficient is far from 1 and the p-value far above 0.05. This sample could be repeated to check this.
+
 \begin{figure}
   \begin{center}
     \includegraphics[width=0.6\linewidth]{corr1.pdf}
@@ -37,13 +41,16 @@ We can be pretty confident in the first correlation test, as the p-value is real
   \end{center}
 \end{figure}
 
-
+\newpage
 \section*{Exercise 2}
 \subsection*{Question 1}
 Here, we want to see if one of the sample is not equal to the other (i.e the brand put less powder than the other). Thus, our null hypothesis $H_0$ will be :\\
-$H_0$ : the two brands tuned the machine to put the same weight of powder.\\
+\begin{center}$H_0$ : the two brands tuned the machine to put the same weight of powder.\end{center}
+
 We then perform a two sample Student analysis with R to see if the two means are equal, and we get a p-value of $0.03481$. We can see here that we refute the null hypothesis. Thus, we can say that the brand A and B tuned the machine in differrent ways.\\
-We perform an other two sample Student analysis with the null hypothesis being $H_0$ : the brand A put more powder than B. We then get a p-value from the t-test of $0.0174$, which means that we reject the null hypothesis. Thus, A puts significantly less powder than B.
+
+We perform an other two sample Student analysis with the null hypothesis being \begin{center}$H_0$ : the brand A put more powder than B.\end{center}
+We then get a p-value from the t-test of $0.0174$, which means that we reject the null hypothesis. Thus, A puts significantly less powder than B.
 
 \subsection*{Question 2}
 We want to check if the two brands actually sell 100mg of powder. For both brands, our null hypothesis will then be :\\
@@ -92,7 +99,12 @@ Please find the data presentation in the \textsc{Figure}~\ref{air2}. The graphic
     \end{center}
 \end{figure}
 
+We use the correlation function of R to see if a correlation exists. We obtain a correlation coefficient of $0.0.04$ wich is far from 1, and a p-value of $0.3259$. Thus, we cannot conclude that there is a significant correlation between the two barometers.
+
 \subsection*{Question 5}
 Using the built-in lm R function, we find a equation of the linear model such as $y = 7.958e-02x + 1.007e+03$. We then use the summary function on the linear model, and see that the signification level is $0.3259$. Thus, we cannot say that our linear model is relevant.
+
+\subsection*{Question 6}
+Even though the two data are different on the physical approach, I think it could make sense to test if they have the same distribution. Indeed, the statistical distribution of the values it takes are not influenced by the physical nature of these parameters which could follow any distribution. It could then be interresting to do a one sample Kolmogorov-Smirnov test. Though, I don't see any point to compare one varaible to the other with the same test.
 
 \end{document}

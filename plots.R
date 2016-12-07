@@ -29,7 +29,7 @@ Bar2 = read.csv("Bar2.csv", header=FALSE)
 Bars = data.frame(Bar1[,2],Bar2[,2])
 
 p3 <- ggplot(Bars, aes(Bars$Bar1, Bars$Bar2))
-p3 = p3 + geom_point() + geom_smooth(method=lm)
+p3 = p3 + geom_point() + geom_smooth(method=lm) + labs(x = "Barometer 1", y="Barometer 2")
 
 pdf("corr3.pdf")
 print(p3)

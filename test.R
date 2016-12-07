@@ -49,11 +49,6 @@ tb <- t.test(B, mu=100)
 print("TB")
 print(tb)
 
-# We compute the Student test. B has a greater mean than 100mg
-tbl <- t.test(B, mu=100, alternative="greater")
-print("TBl")
-print(tbl)
-
 
 ######
 # Exercise 3

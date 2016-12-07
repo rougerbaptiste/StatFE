@@ -39,13 +39,19 @@ print(tbl)
 
 #========================#
 
-Bar1 = read.csv("Bar1.csv", header=FALSE)
-Bar2 = read.csv("Bar2.csv", header=FALSE)
+Bar1 <- read.csv("Bar1.csv", header=FALSE)
+Bar2 <- read.csv("Bar2.csv", header=FALSE)
 
-Bars = data.frame(Bar1[,2],Bar2[,2])
+Bars <- data.frame(Bar1[,2],Bar2[,2])
 
 bar7 <- rcorr(Bars$Bar1,Bars$Bar2, type="spearman")
 print("Bars7")
 print(bar7)
 
 lmbar7 <- lm(Bars$Bar2 ~ Bars$Bar1)
+
+Bar130 <- read.csv("Bar130.csv", header=FALSE)
+
+Bar23 <- data.frame(Bar130[length(Bar1)+1:length(Bar130),])
+
+t723 <- ks.test()

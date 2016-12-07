@@ -5,13 +5,15 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+\usepackage[hmargin=3cm, vmargin=3cm]{geometry}
+
 \author{Baptiste Rouger}
 \title{Statistics : Final Exam}
+
 \begin{document}
 \maketitle
 
-If nothing is mentioned, I will use a 5\% confidence interval.
 \section*{Exercise 1}
 \subsection*{Question 1}
 The population is the cones in the eye. The variable is the number of the L type of cone. In this case, the sample is the N cones observed.
@@ -19,9 +21,9 @@ The population is the cones in the eye. The variable is the number of the L type
 \subsection*{Question 2}
 The population is the humans, the variable is the percentage of cone, and the sample here is the 10 people we observe.\\
 
-The correlation test show, for $M_\%$ and $L_\%$ (\textsc{Figure}~\ref{corr1}), a correlation coefficient of $-0.96$ with a p-value of $1.0620\cdot 10^{-5}$. As the correlation coefficient is near from $-1$ and the p-value far under $0.05$, this shows that there is actually a correlation between $M_\%$ and $L_\%$, as the p-value is far lower than 0.05.\\
+The correlation test show, for $M_\%$ and $L_\%$ (\textsc{Figure}~\ref{corr1} \&~\ref{corML}), a correlation coefficient of $-0.96$ with a p-value of $1.0620\cdot 10^{-5}$. As the correlation coefficient is near from $-1$ and the p-value far under $0.05$, this shows that there is actually a correlation between $M_\%$ and $L_\%$, as the p-value is far lower than 0.05.\\
 
-For $M_\% - L_\%$ and $S_\%$ (\textsc{Figure}~\ref{corr2}), the correlation coefficient is $0.192$ and the p-value $0.5951$. As the correlation coefficient is near to $0$ and the p-value is far above $0.05$, this test does not show a correlation between $M_\% - L_\%$ and $S_\%$ for this sample.\\
+For $M_\% - L_\%$ and $S_\%$ (\textsc{Figure}~\ref{corr2} \&~\ref{corMLS}), the correlation coefficient is $0.192$ and the p-value $0.5951$. As the correlation coefficient is near to $0$ and the p-value is far above $0.05$, this test does not show a correlation between $M_\% - L_\%$ and $S_\%$ for this sample.\\
 
 We can be pretty confident in the first correlation test, as the p-value is really low. Though, for the second test, it seems pretty unlikely that there actually is a correlation, as the correlation coefficient is far from 1 and the p-value far above 0.05. This sample could be repeated to check this.
 
@@ -47,22 +49,23 @@ We can be pretty confident in the first correlation test, as the p-value is real
 Here, we want to see if one of the sample is not equal to the other (i.e the brand put less powder than the other). Thus, our null hypothesis $H_0$ will be :\\
 \begin{center}$H_0$ : the two brands tuned the machine to put the same weight of powder.\end{center}
 
-We then perform a two sample Student analysis with R to see if the two means are equal, and we get a p-value of $0.03481$. We can see here that we refute the null hypothesis. Thus, we can say that the brand A and B tuned the machine in differrent ways.\\
+We then perform a two sample Student analysis with R to see if the two means are equal (\textsc{Figure}~\ref{ttestAB}), and we get a statistic result of $2.2942$ and a p-value of $0.03481$. We can see here that we refute the null hypothesis as the statistic result is above $1.96$ and the p-value is under $0.05$. Thus, we can say that the brand A and B tuned the machine in differrent ways.\\
 
 We perform an other two sample Student analysis with the null hypothesis being \begin{center}$H_0$ : the brand A put more powder than B.\end{center}
-We then get a p-value from the t-test of $0.0174$, which means that we reject the null hypothesis. Thus, A puts significantly less powder than B.
+We then get from the t-test (\textsc{Figure}~\ref{ttestAB}) a statistic result of $2.2942$ as above and a p-value of $0.0174$. We reject the null hypothesis as the statistic result is under $3.92$ and the p-value under $0.05$. Thus, A puts significantly less powder than B.
 
 \subsection*{Question 2}
-We want to check if the two brands actually sell 100mg of powder. For both brands, our null hypothesis will then be :\\
-$H_0$ : the brand sell doses of 100mg.\\
-We perform a one sample Student analysis for both brand samples. We get for the brand A a p-value of $0.06565$. This shows us that we can not refute the null hypothesis, and thus we cannot tell that the brand A sells, in mean, less or more than 100mg of powder.\\
-For the brand B, after performing the same test, we get a p-value of $0.0001213$. This p-value is far under $0.05$, thus we refute the null hypothesis and can say that the brand B do not sell, in mean, 100mg of powder.\\
+We want to check if the two brands actually sell 100mg of powder. For both brands, our null hypothesis will then be :
+\begin{center}$H_0$ : the brand sell doses of 100mg.\end{center}
 
-I then wanted to know if B was selling more or less than 100mg, as they do not sell exactly this weight. I used a one sample T-test with $H_0$ being $\mu_B > 100mg$. I got a p-value of $0.9999$, meaning that we do not reject the null hypothesis. We can then determine that B is not actually cheating because it sells, in mean, more than 100mg of powder.
+We perform a one sample Student analysis for both brand samples (\textsc{Figure}~\ref{ttest100}). We get for the brand A a statistic result of $-2.095$ and a p-value of $0.06565$. This shows us that we can not refute the null hypothesis as the statistic result is under $-1.96$ and the p-value higher than $0.05$. Thus we cannot tell that the brand A sells, in mean, less or more than 100mg of powder, and would need more samples to be determine this.\\
 
+For the brand B, after performing the same test (\textsc{Figure}~\ref{ttest100}), we get a statistic result of $-6.4272$ and a p-value of $0.0001213$. This statistic result is far under $-1.96$ and the p-value is far under $0.05$, thus we do not refute the null hypothesis and can say that the brand B sells, in mean, 100mg of powder.\\
+
+\newpage
 \section*{Exercise 3}
 \subsection*{Question 1}
-Using visual inspection first (\textsc{Figure}~\ref{corr3}), we observe a pretty good correlation between the two barometers. As we can see in \textsc{Figure}, all the points are around a line (here the linear model regression in blue, with confidence interval of 95\%).\\
+Using visual inspection first (\textsc{Figure}~\ref{corr3}), we observe a pretty good correlation between the two barometers. As we can see, all the points are around a line (here the linear model regression in blue, with confidence interval of 95\%).\\
 
 \begin{figure}
   \begin{center}
@@ -72,14 +75,16 @@ Using visual inspection first (\textsc{Figure}~\ref{corr3}), we observe a pretty
   \end{center}
 \end{figure}
 
-We then use the correlation function of R to see if this correlation exists (with the Spearman option). We obtain a correlation coefficient of $0.96$ wich is close to 1, and a p-value of 0 (it is likely that the actual value is higher, but it is the value returned in the matrix by R. It seems this value is under $1\cdot 10^{-5}$.). We can conclude that there is a significant correlation between the two barometers.
+We then use the correlation function of R (\textsc{Figure}~\ref{corbars}) to see if this correlation exists (with the Spearman option). We obtain a correlation coefficient of $0.96$ wich is close to 1, and a p-value of 0 (it is likely that the actual value is higher, but it is the value returned in the matrix by R. It seems this value is under $1\cdot 10^{-5}$.). We can conclude that there is a significant correlation between the two barometers.
 
 \subsection*{Question 2}
-Using the built-in lm R function, we find a equation of the linear model such as $y = 0.97035x + 31.04732$. We then use the summary function on the linear model, and see that the signification level is $<2.2 \cdot 10^{-16}$. Thus, we can say that our linear model is significant.
+Using the built-in R function \textit{lm} (\textsc{Figure}~\ref{lmbar7}), we find a equation of the linear model such as $y = 0.97035x + 31.04732$. We then use the summary function on the linear model variable, and see that the signification level is $<2.2 \cdot 10^{-16}$. Thus, we can say that our linear model is significant.
 
 \subsection*{Question 3}
-Using the built-in R function for the Kolmogorov-Smirnov test, I try the hypothesis $H_0$ : The two samples have the same distribution.\\
-I get the result such as $D = 0.60174$ and a p-value such as $2.2e-16$. As D is lower than $1.96$ which corresponds to the $5\%$ confidence interval and the p-value far under $0.05$; we can say that the two samples are the statistically the same.\\
+Using the built-in R function for the Kolmogorov-Smirnov test, I try the null hypothesis
+\begin{center}$H_0$ : The two samples have the same distribution.\end{center}
+
+I get the result (with the built-in R function : \textsc{Figure}~\ref{smir}) such as $D = 0.60174$ and a p-value such as $2.2e-16$. As D is lower than $1.96$ which corresponds to the $5\%$ confidence interval value in the tables and the p-value far under $0.05$; we can say that these two samples are the statistically the same.\\
 
 \subsection*{Question 4}
 Please find the data presentation in the \textsc{Figure}~\ref{air2}. The graphical presentation of the correlation is presented in \textsc{Figure}~\ref{prestemp}.
@@ -99,12 +104,117 @@ Please find the data presentation in the \textsc{Figure}~\ref{air2}. The graphic
     \end{center}
 \end{figure}
 
-We use the correlation function of R to see if a correlation exists. We obtain a correlation coefficient of $0.0.04$ wich is far from 1, and a p-value of $0.3259$. Thus, we cannot conclude that there is a significant correlation between the two barometers.
+We use the correlation function of R to see if a correlation exists (\textsc{Figure}~\ref{corAP}). We obtain a correlation coefficient of $0.04$ wich is far below 1, and a p-value of $0.3259$. Thus, we cannot conclude that there is a significant correlation between the two barometers.
 
 \subsection*{Question 5}
-Using the built-in lm R function, we find a equation of the linear model such as $y = 7.958e-02x + 1.007e+03$. We then use the summary function on the linear model, and see that the signification level is $0.3259$. Thus, we cannot say that our linear model is relevant.
+Using the built-in R function \textit{lm} (\textsc{Figure}~\ref{lmAP}), we find a equation of the linear model such as $y = 7.958e-02x + 1.007e+03$. We then use the summary function on the linear model, and see that the signification level is $0.3259$. Thus, we cannot say that our linear model is relevant.
 
 \subsection*{Question 6}
-Even though the two data are different on the physical approach, I think it could make sense to test if they have the same distribution. Indeed, the statistical distribution of the values it takes are not influenced by the physical nature of these parameters which could follow any distribution. It could then be interresting to do a one sample Kolmogorov-Smirnov test. Though, I don't see any point to compare one varaible to the other with the same test.
+Even though the two data are different on the physical approach, I think it could make sense to test if they have the same distribution. Indeed, the statistical distribution of the values it takes are not influenced by the physical nature of these parameters which could follow any distribution. It could then be interresting to do a one sample Kolmogorov-Smirnov test. Though, I don't see any point to compare one variable to the other with the same test.
+~\\
+
+\newpage
+\section*{Appendix}
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        ml <- rcorr(M,L)
+        print("ML")
+        print(ml)
+    \end{lstlisting}
+    \caption{Computation of the correlation between M and L}
+    \label{corML}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        mls <- rcorr(M-L, S)
+        print("MLS")
+        print(mls)
+    \end{lstlisting}
+    \caption{Computation of the correlation between M-L and S}
+    \label{corMLS}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        tab <- t.test(A,B)
+        print("TAB")
+        print(tab)
+    \end{lstlisting}
+    \caption{Computation of the Student test between A and B}
+    \label{ttestAB}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        tabg <- t.test(A,B, alternative="greater")
+        print("TABg")
+        print(tabg)
+    \end{lstlisting}
+    \caption{Computation of the Student test between A and B for A is greater than B}
+    \label{ttestA>B}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        ta <- t.test(A, mu=100)
+        print("TA")
+        print(ta)
+
+
+        tb <- t.test(B, mu=100)
+        print("TB")
+        print(tb)
+    \end{lstlisting}
+    \caption{Computation of the Student test for mean of A and mean of B equal 100}
+    \label{ttest100}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        bar7 <- rcorr(Bars$Bar1,Bars$Bar2, type="spearman")
+        print("Bars7")
+        print(bar7)
+    \end{lstlisting}
+    \caption{Computation of the correlation between the two barometers}
+    \label{corbars}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        lmbar7 <- lm(Bars$Bar2 ~ Bars$Bar1)
+        summary(lmbar7)
+    \end{lstlisting}
+    \caption{Computation of the linear model of the correlation between the two barometers}
+    \label{lmbar7}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        t723 <- ks.test(Bar23,Bars$Bar1)
+        print(t723)
+    \end{lstlisting}
+    \caption{Computation of the Kolmogorov-Smirnov test between the 7 days and 23 days samples}
+    \label{smir}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        ap <- rcorr(Bar130[,2],Air2[,2])
+        print("AP")
+        print(ap)
+    \end{lstlisting}
+    \caption{Computation of the correlation between the barometer and the thermometer for 30 days}
+    \label{corAP}
+\end{figure}
+
+\begin{figure}[ht]
+    \begin{lstlisting}[language=R]
+        lmAP <- lm(Bar130[,2]~Air2[,2])
+        summary(lmAP)
+    \end{lstlisting}
+    \caption{Computation of the linear model of the correlation between the barometer and the thermometer data for 30 days}
+    \label{lmAP}
+\end{figure}
 
 \end{document}

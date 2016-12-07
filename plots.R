@@ -1,6 +1,6 @@
 rm(list=ls())
 
-library(Hmisc)
+#library(Hmisc)
 library(ggplot2)
 
 ######
@@ -82,7 +82,7 @@ dev.off()
 #
 PA30 <- data.frame(Air2[,2],Bar130[,2])
 p5 <- ggplot(PA30, aes(Air2...2.,Bar130...2.))
-p5 <- p5 + geom_point() + geom_smooth(method=lm)
+p5 <- p5 + geom_point() + geom_smooth(method=lm) + labs(x = "Thermometer 2", y="Barometer 1")
 
 pdf("PresTemp.pdf")
 print(p5)

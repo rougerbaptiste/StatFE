@@ -77,7 +77,7 @@ Bar130 <- read.csv("Bar130.csv", header=FALSE)
 Bar23 <- data.frame( Bar130[1:(length(Bar130[,2]) - length(Bars$Bar1)),2])
 
 # We compute the two samples Kolmogorov-Smirnov test
-t723 <- ks.test(as.numeric(unlist(Bar23)),as.numeric(unlist(Bars$Bar1)))
+t723 <- ks.test(Bar23,Bars$Bar1)
 print(t723)
 
 

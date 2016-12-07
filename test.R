@@ -33,9 +33,9 @@ tb <- t.test(B, mu=100)
 print("TB")
 print(tb)
 
-tal <- t.test(A, mu=100, alternative="less")
-print("TAl")
-print(tal)
+tbl <- t.test(B, mu=100, alternative="greater")
+print("TBl")
+print(tbl)
 
 #========================#
 
@@ -44,7 +44,7 @@ Bar2 = read.csv("Bar2.csv", header=FALSE)
 
 Bars = data.frame(Bar1[,2],Bar2[,2])
 
-bar7 <- rcorr(Bars$Bar1,Bars$Bar2)
+bar7 <- rcorr(Bars$Bar1,Bars$Bar2, type="spearman")
 print("Bars7")
 print(bar7)
 
